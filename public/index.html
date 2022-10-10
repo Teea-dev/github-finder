@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-   
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -31,6 +31,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+     <!-- aos initialization --> 
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -43,3 +48,182 @@
     -->
   </body>
 </html>
+
+
+
+<!-- import React from "react";
+import Frame from "../../Assets/images/Frame 5731.png";
+import Messages from "../../Assets/images/messages-2.png";
+import Vue from "../../Assets/images/vuesax.png";
+import Customer from "../../Assets/images/cfedgr1 1.svg";
+import "./Service.css";
+const Service = () => {
+  return (
+    <>
+      <div className="body">
+        <h1>Live Chat/dashboard</h1>
+        <div className="content">
+          <div className="side-bar">
+            <ul>
+              <li>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  <img src={Frame} alt="" className="mt-3" />
+                  
+                </a>
+              </li>
+              <li>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  <img src={Messages} alt="" className="mt-3" />
+                </a>
+              </li>
+              <li>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  <img src={Vue} alt="" className="mt-3" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <section className="main">
+            <div className="main-top">
+              <h2> Welcome to AXIO </h2>{" "}
+              <img src={Customer} className="customer-service" alt="" />{" "}
+              <h3>Customer service</h3>
+            </div>
+            <div className="main-card">
+              <div className="card">
+                <h2>Completed</h2>
+              </div>
+              <div className="card">
+                <h2>Pending</h2>
+              </div>
+              <div className="card">
+                <h2>In-progress</h2>
+              </div>
+              <div className="card">
+                <h2>Calls</h2>
+              </div>
+            </div>
+            <section className="other-cards">
+              <div className="other-card">
+                <h2>Avg waiting time</h2>
+              </div>
+              <div className="other-card-this">
+                <h2>This week</h2>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Service; -->
+<!-- @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.5s all;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  list-style: none;
+}
+.body {
+  background: #dfe9f5;
+}
+
+.content {
+  display: flex;
+}
+.side-bar {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  background: #fff;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 20px;
+
+}
+.side-bar ul{
+  justify-content: center;
+}
+a {
+  position: relative;
+  display: table;
+  width: 280px;
+  padding: 10;
+}
+
+.main {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+.main-top {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+ 
+
+}
+.main-card {
+  display: flex;
+  margin-top: 20px;
+}
+.main-card .card {
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+}
+.main-card .card h3 {
+  margin: 10px;
+}
+.other-cards {
+  display: flex;
+  margin-top: 20px;
+}
+.other-cards .other-card {
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+}
+.other-cards .other-card-this {
+  width: 75%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+
+/* .template{
+    display: grid;
+    grid-template-areas: 
+    'nav header header'
+    'nav content content'
+    'nav content content'
+    ;
+   grid-template-columns: 1fr 4fr;
+
+}
+
+.nav{
+    grid-area: nav;
+}
+.header{
+    grid-area: header;
+}
+.content{
+    grid-area: content;
+} */ -->

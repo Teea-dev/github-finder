@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 
 
 const Userlist = ({user:{login,avatar_url,html_url}}) =>{
@@ -11,7 +11,7 @@ const Userlist = ({user:{login,avatar_url,html_url}}) =>{
   } alt=""  />
   <h3>{login}</h3>
   <div>
-    <a href={html_url} target="_blank" rel="noopener noreferrer" className='btn btn-dark btn-sm my-1'>More</a>
+    <Link to={`/user/${login}`}  className='btn btn-dark btn-sm my-1'>More</Link>
   </div>
   </div>
  )
