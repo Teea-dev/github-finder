@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Users from "./components/Users";
@@ -8,47 +8,55 @@ import Search from "./components/Search";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/Pages/About";
-class App extends React.Component {
-  state = {
-    users: [],
-    user: {},
-    loading: false,
-  };
 
-  async componentDidMount() {
-    this.setState({ loading: true });
+const App =()=>{
+  const [users, setUsers] = useState([])
+  const[user, setUser] =useState({})
+  const[loading, setLoading] = useState(false);
 
-    const res =
-      await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}
-    &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
+  // async componentDidMount=() => {
+  //   setLoading(true)
 
-    this.setState({ users: res.data, loading: false });
-  }
+  //   const res =
+  //     await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}
+  //   &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
 
-  searchUser = async (text) => {
+  //   // this.setState({ users: res.data, loading: false });
+  //   setUsers(res.data)
+  //   setLoading(false)
+  // }
+
+  const searchUser = async (text) => {
+    setLoading(true);
     const res =
       await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
 
-    this.setState({ users: res.data.items, loading: false });
+    setUsers(res.data.items)
+    setLoading(false)
   };
-  clearUser = () => {
-    this.setState({ users: [], loading: false });
+ const clearUser = () => {
+   setUsers([])
+   setLoading(false);
   };
   //GET SINGLE USER
-  getUser = async (login) => {
-    this.setState({ loading: true });
+    const getUser = async (login) => {
+   setLoading(true)
     const res =
       await axios.get(`https://api.github.com/users/${login}?client_id=${process.env.REACT_APP_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
 
-    this.setState({ user: res.data, loading: false });
+    setUser(res.data)
+    setLoading (false)
   };
-  clearUser = () => {
-    this.setState({ users: [], loading: false });
-  };
-  render() {
-    const { users, user, loading } = this.state;
+    // clearUser = () => {
+    // setUsers([])
+    // setLoading(false)
+
+
+
+
+    
     return (
       <Router>
         <div className="App">
@@ -59,9 +67,9 @@ class App extends React.Component {
               element={
                 <>
                   <Search
-                    searchUser={this.searchUser}
-                    clearUser={this.clearUser}
-                    showClear={this.state.users.length > 0 ? true : false}
+                    searchUser={searchUser}
+                    clearUser={clearUser}
+                    showClear={users.length > 0 ? true : false}
                   />
                   <div className="container">
                     <Users loading={loading} users={users} />
@@ -90,8 +98,10 @@ class App extends React.Component {
         </div>
       </Router>
     );
-  }
-}
+  };
+
+  
+
 
 export default App;
 
