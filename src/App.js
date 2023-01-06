@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Users from "./components/Users";
@@ -14,17 +14,21 @@ const App =()=>{
   const[user, setUser] =useState({})
   const[loading, setLoading] = useState(false);
 
-  // async componentDidMount=() => {
+
+  // useEffect(()  =>{
+
   //   setLoading(true)
-
+     
   //   const res =
-  //     await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}
+  //     axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}
   //   &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
-
+  
   //   // this.setState({ users: res.data, loading: false });
   //   setUsers(res.data)
   //   setLoading(false)
-  // }
+  // } ,[])
+
+
 
   const searchUser = async (text) => {
     setLoading(true);
@@ -49,13 +53,6 @@ const App =()=>{
     setUser(res.data)
     setLoading (false)
   };
-    // clearUser = () => {
-    // setUsers([])
-    // setLoading(false)
-
-
-
-
     
     return (
       <Router>
@@ -69,7 +66,7 @@ const App =()=>{
                   <Search
                     searchUser={searchUser}
                     clearUser={clearUser}
-                    showClear={users.length > 0 ? true : false}
+                  showClear={users.length > 0 ? true : false}
                   />
                   <div className="container">
                     <Users loading={loading} users={users} />
@@ -81,13 +78,13 @@ const App =()=>{
             <Route path="/about" element={<About />} />
             <Route
               exact
-              path="/user/:login/*"
+              path="/user/:login"
               element={(props) => (
                 <>
                 
                 <User
                   {...props}
-                  getUser={this.getUser}
+                  getUser={getUser}
                   user={user}
                   loading={loading}
                 />

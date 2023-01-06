@@ -21,7 +21,14 @@ export class User extends Component {
     } = this.props.user;
     console.log(name);
 
-    return <div>{name}</div>;
+    return ( 
+    <>
+    
+    <div>{name}</div>
+    <div>{bio}</div>
+    </>
+    
+    );
   }
 }
 
