@@ -90,9 +90,9 @@ const App = () => {
           <Route
             exact
             path="/user/:login"
-            element={(props) => (
+            element={
               <User getUser={getUser} user={user} loading={loading} />
-            )}
+            }
           />
         </Routes>
       </div>
