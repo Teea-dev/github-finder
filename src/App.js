@@ -40,15 +40,15 @@ const App = () => {
   };
 
   //GET REPO DETAILS
-  // const userRepo = async (text) => {
-  //   setLoading(true);
-  //   const res =
-  //     await axios.get(`https://api.github.com/search/users?q=${login}/repos?per_pages=5&sort=created:asc/&client_id=${process.env.REACT_APP_CLIENT_ID}
-  //   &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
+  const userRepo = async (text) => {
+    setLoading(true);
+    const res =
+      await axios.get(`https://api.github.com/search/users?q=${login}/repos?per_pages=5&sort=created:asc/&client_id=${process.env.REACT_APP_CLIENT_ID}
+    &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
 
-  //   setUsers(res.data.items);
-  //   setLoading(false);
-  // };
+    setRepo(res.data);
+    setLoading(false);
+  };
   // FUNCTION FOR THE CLEAR BUTTON
   const clearUser = () => {
     setUsers([]);
@@ -91,7 +91,13 @@ const App = () => {
             exact
             path="/user/:login"
             element={
-              <User getUser={getUser} user={user} loading={loading} />
+              <User
+                getUser={getUser}
+                user={user}
+                getUserRepo={userRepo}
+                repo={repo}
+                loading={loading}
+              />
             }
           />
         </Routes>

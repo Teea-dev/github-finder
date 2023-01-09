@@ -8,6 +8,7 @@ const User = (props) => {
   const params = useParams();
   useEffect(() => {
     props.getUser(params.login);
+    props.getUserRepo(params.login);
   }, []);
 
   const {
@@ -67,7 +68,7 @@ const User = (props) => {
           </a>
           <ul>
             <li>{login && <>Username:{login}</>}</li>
-            <li>{blog && <>Website:{blog}</>}</li>
+      <li>{blog && <>Website: <a href={blog} target='_blank' rel="noopener noreferrer">My Blog</a> </>}</li>
             <li>{company && <>Company:{company}</>}</li>
           </ul>
         </div>
