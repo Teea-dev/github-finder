@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import Users from "./components/Users";
 import User from "./components/User";
 import Search from "./components/Search";
-
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/Pages/About";
