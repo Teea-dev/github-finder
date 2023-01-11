@@ -1,12 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
+import Repo from './Repos/Repo';
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import { Link } from "react-router-dom";
 
 const User = (props) => {
   const params = useParams();
-  useEffect(() => {
+  useEffect(( ) => {
     props.getUser(params.login);
     props.getUserRepo(params.login);
   }, []);
@@ -26,7 +27,7 @@ const User = (props) => {
     public_gist,
     hierable,
   } = props.user;
-  console.log(name);
+
   const loading = props.user;
   return (
     <>
@@ -79,6 +80,7 @@ const User = (props) => {
         <div className="badge badge-primary">Public Repos:{public_repos}</div>
         <div className="badge badge-primary">Public Gist:{public_gist}</div>
       </div>
+      <Repo repo={Repo}/>
     </>
   );
 };

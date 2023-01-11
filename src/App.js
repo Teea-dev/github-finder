@@ -42,7 +42,7 @@ const App = () => {
   const userRepo = async (login) => {
     setLoading(true);
     const res =
-      await axios.get(`https://api.github.com/search/users?${login}/repos?per_pages=5&sort=created:asc/&client_id=${process.env.REACT_APP_CLIENT_ID}
+      await axios.get(`https://api.github.com/users?${login}/repos?per_pages=5&sort=created:asc/&client_id=${process.env.REACT_APP_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
 
     setRepo(res.data);
