@@ -1,15 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
-import Repo from './Repos/Repo';
+import Repo from './repos/Repo';
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import { Link } from "react-router-dom";
 
-const User = (props) => {
+const User = ({user, loading,getUser,getUserRepo,repo}) => {
   const params = useParams();
   useEffect(( ) => {
-    props.getUser(params.login);
-    props.getUserRepo(params.login);
+   getUser(params.login);
+    getUserRepo(params.login);
+    // eslint-disable-next-line
   }, []);
 
   const {
@@ -26,9 +27,10 @@ const User = (props) => {
     public_repos,
     public_gist,
     hierable,
-  } = props.user;
 
-  const loading = props.user;
+  } = user;
+
+  // const loading = user;
   return (
     <>
       <Link to="/" className="btn btn-light">
@@ -80,6 +82,7 @@ const User = (props) => {
         <div className="badge badge-primary">Public Repos:{public_repos}</div>
         <div className="badge badge-primary">Public Gist:{public_gist}</div>
       </div>
+    
       <Repo repo={Repo}/>
     </>
   );
