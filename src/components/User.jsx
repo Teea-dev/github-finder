@@ -10,7 +10,7 @@ const User = ({user, loading,getUser,getUserRepo,repo}) => {
   useEffect(( ) => {
    getUser(params.login);
     getUserRepo(params.login);
-    // eslint-disable-next-line
+   
   }, []);
 
   const {
