@@ -56,8 +56,7 @@ const User = ({user, loading,getUser,getUserRepo,repo}) => {
         <div>
           {bio && (
             <>
-              <h3>Bio</h3>
-              <p>Bio</p>
+              <p>{bio}</p>
             </>
           )}
           <a
