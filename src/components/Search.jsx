@@ -1,48 +1,47 @@
+import React, { useState } from "react";
+import { useContext } from "react"
+import githubContext from "./context/Github/githubContext";
+const Search = ({ showClear, clearUser }) => {
+  const githubContext = useContext(githubContext);
+  const [text, setText] = useState("");
 
-import React, {useState} from "react";
-
-const Search =({searchUser, showClear, clearUser}) =>  {
- 
-  const [text, setText] = useState('');
-
-
-  
-const onSubmit = (e) =>{
-  e.preventDefault();
-if (text==="") {
-  alert('please enter something', 'light')
-}else{
-  searchUser(text);
-  setText('')
-}
-
-  }
-  const onChange = (e) => {
-    setText(  e.target.value)
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (text === "") {
+      alert("please enter something", "light");
+    } else {
+      githubContext.searchUser(text);
+      setText("");
+    }
   };
-  
+  const onChange = (e) => {
+    setText(e.target.value);
+  };
 
-
-    return (
+  return (
     <>
-        <form className="form" onSubmit={onSubmit} > 
-
-      <input
-        type="text"
-        name="text"
-        placeholder="search ...."
-        value={text}
-        onChange={onChange}
+      <form className="form" onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="text"
+          placeholder="search ...."
+          value={text}
+          onChange={onChange}
         />
-      <input type="submit" value="search"  className="btn btn-dark btn-block"/>
-        </form>
-       {showClear && (
-        <button className="btn btn-light btn-block" onClick={clearUser}> Clear </button>
-
-       )}
+        <input
+          type="submit"
+          value="search"
+          className="btn btn-dark btn-block"
+        />
+      </form>
+      {showClear && (
+        <button className="btn btn-light btn-block" onClick={clearUser}>
+          {" "}
+          Clear{" "}
+        </button>
+      )}
     </>
   );
-}
-
+};
 
 export default Search;

@@ -8,6 +8,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/Pages/About";
 
+import GithubState from "./components/context/Github/GithubState";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
@@ -28,15 +29,6 @@ const App = () => {
   // } ,[])
 
   //THE SEARCH USER FUNCTION
-  const searchUser = async (text) => {
-    setLoading(true);
-    const res =
-      await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_CLIENT_ID}
-    &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
-
-    setUsers(res.data.items);
-    setLoading(false);
-  };
 
   //GET REPO DETAILS
   const userRepo = async (login) => {
@@ -65,7 +57,10 @@ const App = () => {
   };
 
   return (
-    
+    <GithubState>
+
+
+
     <Router>
       <div className="App">
         <Navbar />
@@ -75,7 +70,7 @@ const App = () => {
             element={
               <>
                 <Search
-                  searchUser={searchUser}
+                 
                   clearUser={clearUser}
                   showClear={users.length > 0 ? true : false}
                 />
@@ -103,6 +98,7 @@ const App = () => {
         </Routes>
       </div>
     </Router>
+    </GithubState>
   );
 };
 
