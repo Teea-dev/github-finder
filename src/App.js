@@ -8,7 +8,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/Pages/About";
 
-import GithubState from "./components/context/Github/GithubState";
+import GithubState from "./components/context/Github/GithubProvider";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
@@ -40,11 +40,7 @@ const App = () => {
     setRepo(res.data);
     setLoading(false);
   };
-  // FUNCTION FOR THE CLEAR BUTTON
-  const clearUser = () => {
-    setUsers([]);
-    setLoading(false);
-  };
+
   //GET SINGLE USER
   const getUser = async (login) => {
     setLoading(true);
@@ -58,46 +54,39 @@ const App = () => {
 
   return (
     <GithubState>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Search />
+                  <div className="container">
+                    <Users loading={loading} users={users} />
+                  </div>
+                </>
+              }
+            />
 
-
-
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Search
-                 
-                  clearUser={clearUser}
-                  showClear={users.length > 0 ? true : false}
+            <Route path="/about" element={<About />} />
+            <Route
+              exact
+              path="/user/:login"
+              element={
+                <User
+                  getUser={getUser}
+                  user={user}
+                  getUserRepo={userRepo}
+                  repo={repo}
+                  loading={loading}
                 />
-                <div className="container">
-                  <Users loading={loading} users={users} />
-                </div>
-              </>
-            }
-          />
-
-          <Route path="/about" element={<About />} />
-          <Route
-            exact
-            path="/user/:login"
-            element={
-              <User
-                getUser={getUser}
-                user={user}
-                getUserRepo={userRepo}
-                repo={repo}
-                loading={loading}
-              />
-            }
-          />
-        </Routes>
-      </div>
-    </Router>
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
     </GithubState>
   );
 };

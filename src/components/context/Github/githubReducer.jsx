@@ -16,6 +16,12 @@ import {
                loading:false
             }
 
+         case CLEAR_USERS:
+            return{
+                ...state,
+                users:[],
+                loading:false,
+            }     
         case SET_LOADING:
             return{
              ...state,

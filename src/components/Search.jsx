@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useContext } from "react"
-import githubContext from "./context/Github/githubContext";
-const Search = ({ showClear, clearUser }) => {
-  const githubContext = useContext(githubContext);
+import { useContext } from "react";
+import GithubContext from "./context/Github/githubContext";
+
+const Search = () => {
+  const githubContext = useContext(GithubContext);
   const [text, setText] = useState("");
 
   const onSubmit = (e) => {
@@ -34,8 +35,11 @@ const Search = ({ showClear, clearUser }) => {
           className="btn btn-dark btn-block"
         />
       </form>
-      {showClear && (
-        <button className="btn btn-light btn-block" onClick={clearUser}>
+      {githubContext.users.length > 0 && (
+        <button
+          className="btn btn-light btn-block"
+          onClick={githubContext.clearUser}
+        >
           {" "}
           Clear{" "}
         </button>
