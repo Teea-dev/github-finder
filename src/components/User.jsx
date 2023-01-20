@@ -1,18 +1,21 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect , useContext} from "react";
 import Repo from './repos/Repo';
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import { Link } from "react-router-dom";
+import GithubContext from "./context/Github/githubContext";
 
-const User = ({user, loading,getUser,getUserRepo,repo}) => {
+const User = ({getUserRepo,repo}) => {
+  const githubContext = useContext(GithubContext);
+  
+  const {user, loading,getUser} = githubContext;
   const params = useParams();
   useEffect(( ) => {
    getUser(params.login);
     getUserRepo(params.login);
    
   }, []);
-
   const {
     name,
     avatar_url,

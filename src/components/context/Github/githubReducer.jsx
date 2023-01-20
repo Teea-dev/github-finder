@@ -15,7 +15,12 @@ import {
                users:action.payload,
                loading:false
             }
-
+         case GET_USER:
+            return{
+                ...state,
+                getUser:action.payload,
+                loading:false
+            }
          case CLEAR_USERS:
             return{
                 ...state,

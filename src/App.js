@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Users from "./components/Users";
@@ -11,7 +11,6 @@ import About from "./components/Pages/About";
 import GithubState from "./components/context/Github/GithubProvider";
 const App = () => {
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
   const [repo, setRepo] = useState([]);
 
@@ -42,15 +41,6 @@ const App = () => {
   };
 
   //GET SINGLE USER
-  const getUser = async (login) => {
-    setLoading(true);
-    const res =
-      await axios.get(`https://api.github.com/users/${login}?client_id=${process.env.REACT_APP_CLIENT_ID}
-    &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
-
-    setUser(res.data);
-    setLoading(false);
-  };
 
   return (
     <GithubState>
@@ -76,8 +66,7 @@ const App = () => {
               path="/user/:login"
               element={
                 <User
-                  getUser={getUser}
-                  user={user}
+                  
                   getUserRepo={userRepo}
                   repo={repo}
                   loading={loading}
