@@ -40,7 +40,7 @@ const App = () => {
     setLoading(false);
   };
 
-  //GET SINGLE USER
+ 
 
   return (
     <GithubState>

@@ -9,10 +9,10 @@ import GithubContext from "./context/Github/githubContext";
 const User = ({getUserRepo,repo}) => {
   const githubContext = useContext(GithubContext);
   
-  const {user, loading,getUser} = githubContext;
+  
   const params = useParams();
   useEffect(( ) => {
-   getUser(params.login);
+   githubContext.getUser(params.login);
     getUserRepo(params.login);
    
   }, []);
@@ -31,7 +31,7 @@ const User = ({getUserRepo,repo}) => {
     public_gist,
     hierable,
 
-  } = user;
+  } = githubContext.user;
 
   // const loading = user;
   return (

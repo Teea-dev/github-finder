@@ -42,7 +42,9 @@ const GithubState = (props) => {
     dispatch({
       type:GET_USER,
       payload:res.data,
+
     })
+    console.log(res.data);
   };
 
   //Clear Users
