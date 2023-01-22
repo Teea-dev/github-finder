@@ -1,20 +1,18 @@
 import React from "react";
-import { useEffect , useContext} from "react";
-import Repo from './repos/Repo';
+import { useEffect, useContext } from "react";
+import Repo from "./repos/Repo";
 import { useParams } from "react-router-dom";
-import Spinner from "./Spinner";
+
 import { Link } from "react-router-dom";
 import GithubContext from "./context/Github/githubContext";
 
-const User = ({getUserRepo,repo}) => {
+const User = ({ getUserRepo, repo }) => {
   const githubContext = useContext(GithubContext);
-  
-  
+
   const params = useParams();
-  useEffect(( ) => {
-   githubContext.getUser(params.login);
+  useEffect(() => {
+    githubContext.getUser(params.login);
     getUserRepo(params.login);
-   
   }, []);
   const {
     name,
@@ -30,7 +28,6 @@ const User = ({getUserRepo,repo}) => {
     public_repos,
     public_gist,
     hierable,
-
   } = githubContext.user;
 
   // const loading = user;
@@ -73,7 +70,16 @@ const User = ({getUserRepo,repo}) => {
           </a>
           <ul>
             <li>{login && <>Username:{login}</>}</li>
-      <li>{blog && <>Website: <a href={blog} target='_blank' rel="noopener noreferrer">My Blog</a> </>}</li>
+            <li>
+              {blog && (
+                <>
+                  Website:{" "}
+                  <a href={blog} target="_blank" rel="noopener noreferrer">
+                    My Blog
+                  </a>{" "}
+                </>
+              )}
+            </li>
             <li>{company && <>Company:{company}</>}</li>
           </ul>
         </div>
@@ -84,8 +90,7 @@ const User = ({getUserRepo,repo}) => {
         <div className="badge badge-primary">Public Repos:{public_repos}</div>
         <div className="badge badge-primary">Public Gist:{public_gist}</div>
       </div>
-    
-      <Repo repo={Repo}/>
+      <Repo repo={Repo} />
     </>
   );
 };
