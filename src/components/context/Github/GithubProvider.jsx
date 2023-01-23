@@ -40,10 +40,9 @@ const GithubState = (props) => {
     &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
 
     dispatch({
-      type:GET_USER,
-      payload:res.data,
-
-    })
+      type: GET_USER,
+      payload: res.data,
+    });
     console.log(res.data);
   };
 

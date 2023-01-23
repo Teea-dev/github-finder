@@ -29,7 +29,6 @@ const User = ({ getUserRepo, repo }) => {
     public_gist,
     hierable,
   } = githubContext.user;
-
   // const loading = user;
   return (
     <>
