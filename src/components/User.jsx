@@ -8,11 +8,13 @@ import GithubContext from "./context/Github/githubContext";
 
 const User = ({ getUserRepo, repo }) => {
   const githubContext = useContext(GithubContext);
+  const {user,getUser} = githubContext;
 
   const params = useParams();
   useEffect(() => {
-    githubContext.getUser(params.login);
+    getUser(params.login)
     getUserRepo(params.login);
+  console.log(user);
   }, []);
   const {
     name,
@@ -28,7 +30,7 @@ const User = ({ getUserRepo, repo }) => {
     public_repos,
     public_gist,
     hierable,
-  } = githubContext.user;
+  } = user;
   // const loading = user;
   return (
     <>

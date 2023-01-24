@@ -18,7 +18,7 @@ import {
          case GET_USER:
             return{
                 ...state,
-                getUser:action.payload,
+                user:action.payload,
                 loading:false
             }
          case CLEAR_USERS:
