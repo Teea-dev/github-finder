@@ -15,6 +15,12 @@ import {
                users:action.payload,
                loading:false
             }
+            case GET_REPOS:
+                return{
+                    ...state,
+                    repo:action.payload,
+                    loading:false
+                }
          case GET_USER:
             return{
                 ...state,

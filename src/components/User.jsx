@@ -6,9 +6,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import GithubContext from "./context/Github/githubContext";
 
-const User = ({ getUserRepo, repo }) => {
+const User = () => {
   const githubContext = useContext(GithubContext);
-  const {user,getUser} = githubContext;
+  const {user,getUser,repo,getUserRepo} = githubContext;
 
   const params = useParams();
   useEffect(() => {
