@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Users from "./components/Users";
@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/Pages/About";
 
 import GithubState from "./components/context/Github/GithubProvider";
+import AlertState from "./components/context/alert/AlertState";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -40,10 +41,11 @@ const App = () => {
     setLoading(false);
   };
 
- 
-
   return (
     <GithubState>
+      <AlertState>
+
+     
       <Router>
         <div className="App">
           <Navbar />
@@ -65,17 +67,13 @@ const App = () => {
               exact
               path="/user/:login"
               element={
-                <User
-                  
-                  getUserRepo={userRepo}
-                  repo={repo}
-                  loading={loading}
-                />
+                <User getUserRepo={userRepo} repo={repo} loading={loading} />
               }
             />
           </Routes>
         </div>
       </Router>
+      </AlertState>
     </GithubState>
   );
 };
