@@ -13,7 +13,7 @@ const User = () => {
   const params = useParams();
   useEffect(() => {
     getUser(params.login)
-    getUserRepo(params.login);
+    // getUserRepo(params.login);
   console.log(user);
   }, []);
   const {
