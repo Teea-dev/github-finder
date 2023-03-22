@@ -11,24 +11,10 @@ import About from "./components/Pages/About";
 import AlertState from "./components/context/Alert/AlertState";
 import GithubState from "./components/context/Github/GithubProvider";
 
-
 const App = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [repo, setRepo] = useState([]);
-
-  // useEffect(()  =>{
-
-  //   setLoading(true)
-
-  //   const res =
-  //     axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}
-  //   &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`);
-
-  //   // this.setState({ users: res.data, loading: false });
-  //   setUsers(res.data)
-  //   setLoading(false)
-  // } ,[])
 
   //THE SEARCH USER FUNCTION
 
